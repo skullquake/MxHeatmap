@@ -13,7 +13,6 @@ test/.project
 *.tmp
 *.lock
 .idea/
-res/
 
 
 node_modules/
