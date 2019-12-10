@@ -201,9 +201,11 @@ require(
 					    frame = frame || window.requestAnimationFrame(draw);
 					};
 					*/
-
-					var radius = get('radius'),
-					    blur = get('blur'),
+					console.log('----------------------------------------');
+					console.log(this);
+					console.log('----------------------------------------');
+					var radius =this.input_radius,//get('radius'),
+					    blur = this.input_blur,//get('blur'),
 					    changeType = 'oninput' in radius ? 'oninput' : 'onchange';
 
 					radius[changeType] = blur[changeType] = function (e) {
