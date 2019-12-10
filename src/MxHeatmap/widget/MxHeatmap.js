@@ -80,18 +80,19 @@ require(
 				postCreate:function(){
 				},
 				update:function(obj,callback){
-					if(this._objectChangeHandler!==null) {
-						this.unsubscribe(this._objectChangeHandler);
-					}
-					if(obj!=null){
-						this._objectChangeHandler=this.subscribe({
-							guid: obj.getGuid(),
-							callback:dojo.hitch(this,function(){
-								this._updateRendering(callback);
-							})
-						});
-					}else{
-					}
+                                        if(this._objectChangeHandler!==null) {
+                                                this.unsubscribe(this._objectChangeHandler);
+                                        }
+                                        if(obj){
+                                                this._objectChangeHandler=this.subscribe(
+							{
+								guid: obj.getGuid(),
+								callback:dojo.hitch(this,function(){
+									this._updateRendering(callback);
+								})
+							}
+						);
+                                        }else{}
 					this._contextObj=obj;
 					this._updateRendering(callback);
 					this._executeCallback(callback,"update");
