@@ -72,27 +72,27 @@ require(
 				str_data_y:null,
 				str_data_mag:null,
 				//------------------------------
+				_objectChangeHandler:null,
+				//------------------------------
 				constructor:function(){
 					this._handles=[];
 				},
 				postCreate:function(){
-					console.log(_simpleheat);
 				},
 				update:function(obj,callback){
-					this._contextObj=obj;
-/*
 					if(this._objectChangeHandler!==null) {
 						this.unsubscribe(this._objectChangeHandler);
 					}
-					if(obj){
+					if(obj!=null){
 						this._objectChangeHandler=this.subscribe({
-						guid: obj.getGuid(),
-						callback:dojo.hitch(this,function(){
-							this._updateRendering(callback);
-						})
-					});
-					}else{}
-*/
+							guid: obj.getGuid(),
+							callback:dojo.hitch(this,function(){
+								this._updateRendering(callback);
+							})
+						});
+					}else{
+					}
+					this._contextObj=obj;
 					this._updateRendering(callback);
 					this._executeCallback(callback,"update");
 				},
